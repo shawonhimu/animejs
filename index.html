@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="block"> </div>
+
+        <h2><span>This is a project on</span><br/>
+        AnimeJS</h2>
+
+    </div>
+
+  
+
+    <script src="js/anime.min.js"></script>
+
+    <script>
+
+        const container = document.querySelector('.container');
+        for(let i=0; i<=20; i++){
+            const blocks = document.createElement('div');
+            blocks.classList.add('block');
+            container.appendChild(blocks);
+        }
+
+        function animateBlocks() {
+            anime({
+                targets:'.block',
+                translateX: function () {
+                    return anime.random(-600,700);
+                },
+                translateY: function () {
+                    return anime.random(-500,400);
+                },
+                scale: function () {
+                    return anime.random(1,5);
+                },
+
+                rotate:45,
+                easing:'easeInOutBack',
+                duration:2000,
+                delay:anime.stagger(10),
+                complete:animateBlocks,
+            })
+        }
+        animateBlocks();
+
+    </script>
+</body>
+</html>
